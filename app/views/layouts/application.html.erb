@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TweetApp</title>
+    <title>meshi</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
@@ -13,7 +14,7 @@
     <header>
       <div class="header-logo">
         
-        <%= link_to("TweetApp", "/") %>
+        <%= link_to("meshi", "/") %>
       </div>
       <ul class="header-menus">
         <li>
@@ -24,9 +25,20 @@
           
           <%= link_to("投稿一覧", "/posts") %>
         </li>
+        <li>
+          <%= link_to("新規投稿", "/posts/new") %>
+        </li>
       </ul>
+      
     </header>
-    
+      
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>">
+          <a class="close" data-dismiss="alert">×</a>
+          <%= msg %>
+        </div>
+      <% end %>
+      
      <%= yield %>
   </body>
 </html>
